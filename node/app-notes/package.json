@@ -1,0 +1,25 @@
+{
+  "name": "app-notes",
+  "version": "1.0.0",
+  "description": "Simple notes application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Asincrono",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-standard": "^7.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": "standard"
+  }
+}
