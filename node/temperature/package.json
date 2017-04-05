@@ -1,7 +1,7 @@
 {
-  "name": "app-notes",
+  "name": "temperature",
   "version": "1.0.0",
-  "description": "Simple notes application",
+  "description": "Get temperature from postal address.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +24,8 @@
     "extends": "standard"
   },
   "dependencies": {
+    "axios": "^0.16.0",
+    "request": "^2.81.0",
     "yargs": "^7.0.2"
   }
 }
