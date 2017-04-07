@@ -1,36 +1,83 @@
 const fs = require('fs')
 const notesFile = fs.openSync('./notes.txt', 'a+')
+const notes = load()
+
+let lastId = getLastId(notes)
+
+function getLastId (notes) {
+  return notes.reduce((maxId, crrVal) => {
+    if (crrVal.id > maxId) {
+      return crrVal.id
+    }
+    return maxId
+  }, 0)
+}
+
+function load () {
+  try {
+    let notesStr = fs.readFileSync(notesFile, 'utf8')
+    return JSON.parse(notesStr)
+  } catch (error) {
+    console.log(error)
+  }
+  return []
+}
+
+function save () {
+  if (notes.length > 0) {
+    fs.writeSync(notesFile, JSON.stringify(notes))
+  }
+}
+
+function create (title, description) {
+  if (notes.find(value => value.title === title)) {
+    return notes
+  }
+
+  let note = {
+    id: lastId + 1,
+    title: title,
+    description: description
+  }
+
+  lastId += 1
+
+  notes.push(note)
+  return note
+}
+
+function retrieve (id) {
+  return notes.find((value) => value.id === id)
+}
+
+function retireveAll () {
+  return notes
+}
+
+function update (id, title, description) {
+  let idx = notes.findIndex(value => value.id === id)
+  if (idx) {
+    let newNote = {id, title, description}
+    return notes.splice(idx, 1, newNote)
+  }
+  return false
+}
+
+function del (id) {
+  let idx = notes.findIndex(value => value.id === id)
+  if (idx) {
+    return notes.splice(idx, 1)
+  }
+
+  return false
+}
 
 module.exports = {
-  add: (notesList, title, description) => {
-    if (notesList.find(value => value.title === title)) {
-      return notesList
-    }
-
-    let note = {
-      title: title,
-      description: description
-    }
-
-    notesList.push(note)
-    return notesList
-  },
-  del: (notesList, title) => {
-    let idx = notesList.findIndex(value => value.title === title)
-    if (idx) {
-      notesList.splice(idx, 1)
-    }
-    return notesList
-  },
-  get: (notesList, title) => notesList.find((value) => value.title === title),
-  save: (notesList) => fs.writeSync(notesFile, JSON.stringify(notesList)),
-  load: () => JSON.parse(fs.readFileSync(notesFile, 'utf8')),
-  update: (notesList, title, description) => {
-    let idx = notesList.findIndex(value => value.title === title)
-    if (idx) {
-      let newNote = {title, description}
-      notesList.splice(idx, 1, newNote)
-    }
-    return notesList
-  }
+  save,
+  notes,
+  create,
+  retrieve,
+  retireveAll,
+  update,
+  del
 }
