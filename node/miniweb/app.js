@@ -19,10 +19,8 @@ const bodyParser = require('body-parser')
 
 const PORT_NUMBER = process.env.PORT_NUMBER || 3000
 
-
 // This will create the server.
 let app = express()
-
 
 // Setting common to all requests => middleware.
 app.use('/', (req, res, next) => {
@@ -41,7 +39,6 @@ app.get('/note/:id', (req, res, next) => {
   next()
 })
 
-
 // Setting post responses.
 app.post('/', (req, res) => res.send('Response to POST'))
 
@@ -53,4 +50,3 @@ app.post('/add_user', (req, res) => {
 app.listen(PORT_NUMBER, () => {
   console.log(`Listening at ${PORT_NUMBER}...`)
 })
-
