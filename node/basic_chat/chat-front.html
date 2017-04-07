@@ -97,6 +97,7 @@
 		var chatWindow = $('#chatWindow')
 		var usernameForm = $('#usernameForm')
 		var username = $('#username')
+		var users = $('#users')
 		var namesWrapper = $('#namesWrapper')
 		var mainWrapper = $('#mainWrapper')
 		var socket = io.connect()
@@ -106,12 +107,31 @@
 		usernameForm.submit((e) => {
 			e.preventDefault()
 			var value = username.val()
-			socket.emit('new_user', {username: username.val()})
+			socket.emit('new user', {username: username.val()})
+		})
+
+		socket.on('user change', data => {
+			userList = data.users
+			let html = '<ul>'
+			userList.forEach(user => {
+				html += `<li>${user}</li>`
+			})
+			console.log(html)
+			users.html(html + '</ul>')
 		})
 
 		socket.on('ok', data => {
 			namesWrapper.hide()
 			mainWrapper.show()
+		})
+
+		messageForm.submit((e) => {
+			e.preventDefault()
+			socket.emit('chat message', {message: message.val()})
+		})
+
+		socket.on('chat message', data => {
+			chatWindow.append(`<p><strong>${data.message}</strong></p>`)
 		})
 	</script>
 </body>
