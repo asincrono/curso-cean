@@ -1,7 +1,11 @@
 {
   "ecmaVersion": 6,
+  "dontLoad": [
+    "node_modules/**"
+  ],
   "plugins": {
-    "node": {},
-    "node-express": {}
+      "modules": {},
+      "node": {},
+      "es_modules": {}
   }
 }
