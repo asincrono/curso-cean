@@ -100,38 +100,41 @@
 		var users = $('#users')
 		var namesWrapper = $('#namesWrapper')
 		var mainWrapper = $('#mainWrapper')
-		var socket = io.connect()
+		// ¿Probar con una closure?
+		(function () {
+			var socket = io.connect()
 
-		console.log('wtf!')
+			console.log('wtf!')
 
-		usernameForm.submit((e) => {
-			e.preventDefault()
-			var value = username.val()
-			socket.emit('new user', {username: username.val()})
-		})
-
-		socket.on('user change', data => {
-			userList = data.users
-			let html = '<ul>'
-			userList.forEach(user => {
-				html += `<li>${user}</li>`
+			usernameForm.submit((e) => {
+				e.preventDefault()
+				var value = username.val()
+				socket.emit('new user', {username: username.val()})
 			})
-			console.log(html)
-			users.html(html + '</ul>')
-		})
 
-		socket.on('ok', data => {
-			namesWrapper.hide()
-			mainWrapper.show()
-		})
+			socket.on('user change', data => {
+				userList = data.users
+				let html = '<ul>'
+				userList.forEach(user => {
+					html += `<li>${user}</li>`
+				})
+				console.log(html)
+				users.html(html + '</ul>')
+			})
 
-		messageForm.submit((e) => {
-			e.preventDefault()
-			socket.emit('chat message', {message: message.val()})
-		})
+			socket.on('ok', data => {
+				namesWrapper.hide()
+				mainWrapper.show()
+			})
 
-		socket.on('chat message', data => {
-			chatWindow.append(`<p><strong>${data.message}</strong></p>`)
-		})
+			messageForm.submit((e) => {
+				e.preventDefault()
+				socket.emit('chat message', {message: message.val()})
+			})
+
+			socket.on('chat message', data => {
+				chatWindow.append(`<p><strong>${data.message}</strong></p>`)
+			})
+		})()	
 	</script>
 </body>

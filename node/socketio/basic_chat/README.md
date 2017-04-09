@@ -46,4 +46,46 @@ const server = require('http').Server(app)
 ```
 Server será el objeto sobre el que llamaremos el método `listen(PORT_NUMBER)` para ponerlo a la escucha más adelante.
 
-A continuación hemos de obtener nuestro 
+A continuación hemos de obtener nuestro objeto `socket.io` pasándole ser servidor `http`:
+```javascript
+const io = require('socket.io')(server)
+```
+
+`io` detectará el evento `connection` cada vez que se conecte un _socket_ cliente:
+
+```javascript
+io.on('connection', socket => {
+  console.log('new user connected.')
+})
+```
+
+## Socket en el servidor
+Cada vez que un cliente se conecte, se generará un evento `'connection'`. Este evento tendrá asociada una función de _callback_ que recibirá el _socket_ que se ha conectado como argumento.
+
+De este modo podremos establecer las acciones que se llevarán a cabo para los eventos que se produzcan en el _socket_ (desconexión, envío de datos, etc.).
+```javascript
+io.on('connection', socket => {
+  console.log('new user connected.')
+  // establecemos el comportamieno frente a eventos del socket.
+  socket.on('disconnect', () => console.log('user disconnected.'))
+  // establecemos respuestas a los distintos mensajes del socket.
+  socket.on('chat msg', (data) => {
+    console.log(`from: ${data.user}, msg: ${data.msg}.`)
+  })
+})
+```
+
+## Socket en el cliente
+**Socket.io** generará automáticamente el código javascript que hemos de incluir en el cliente y lo exportará mediante la URL `/socket.io/socket.io.js`
+```html
+<script>
+function() {
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  }) 
+}()
+</script>
+```
