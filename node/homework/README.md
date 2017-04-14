@@ -1,6 +1,6 @@
 # Autenticación / Autorización
+Ejercicios del curso de CEAN que consisten en la creación de un sitio web con cuatro páginas y servicio de login mediante [**Passport.js**](http://passportjs.org).
 
-+++
 ## Iteración 1
 * Configura un sitio web con __Nodejs__ y __Express__.
 * Gestiona la petición de '/' con el verbo __GET__.
@@ -33,11 +33,9 @@ Modifica `profile.html` incluyendo:
 * Título de la página `Perfil de usuario`.
 * Párrafo con la información del usuario.
 
-+++
 ## Iteración 6
 Modificar `about.html` incluyendo un párrafo con la información de la empresa.
 
-+++
 ## Iteración 7
-### Uso de [Passport.js](http://passportjs.org/)
+### Uso de [Passport.js](http://passportjs.org)
 Activación del proceso de **autenticación** sobre el sitio web de modo que para poder entrar en la **sección de _profile_** el usuario tenga que estar autorizado (previo _login_). No será necesaria autenticación para acceder a la sección de la información de la empresa (página `about.html`).
