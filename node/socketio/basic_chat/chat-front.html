@@ -61,7 +61,7 @@
 	</style>
 </head>
 <body>
-	
+
 <body>
 	<div id="container">
 		<div id="namesWrapper">
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
@@ -135,6 +135,6 @@
 			socket.on('chat message', data => {
 				chatWindow.append(`<p><strong>${data.message}</strong></p>`)
 			})
-		})()	
+		})()
 	</script>
 </body>

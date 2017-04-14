@@ -47,20 +47,21 @@ if (cluster.isMaster) {
 
   const users = []
 
-  app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'chat-front.html')))
+  app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'bootstrap-chat-front.html')))
+  app.get('/localcode.js', (req, res) => res.sendFile(path.join(__dirname, 'localcode.js')))
 
   io.on('connection', socket => {
     console.log('Client connected')
     socket.on('new user', (data) => {
-      console.log(`New user: ${data.username}`)
+      console.log(`New user: ${data.userName}`)
       console.log(socket.rooms)
-      addUser(users, data.username)
+      addUser(users, data.userName)
       socket.emit('ok')
       io.emit('user change', {users})
     })
 
     socket.on('chat message', (data) => {
-      console.log(`message recived: ${data.message}`)
+      console.log(`message recived: ${data.message}\nfrom: ${data.user}`)
       let message = parseMessage(data.message)
       switch (message.command) {
         case 'msg':
