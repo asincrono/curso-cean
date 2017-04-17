@@ -1,0 +1,22 @@
+{
+  "name": "homework_structure",
+  "version": "1.0.0",
+  "description": "Homework with the \"right\" folder structure.",
+  "main": "./app/server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app/server.js"
+  },
+  "author": "Manuel C. Piñeiro <asincrono@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "couchbase": "^2.3.2",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "pug": "^2.0.0-beta11"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
