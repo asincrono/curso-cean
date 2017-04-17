@@ -3,4 +3,4 @@ function capitalize (string) {
   return first.toUpperCase() + string
 }
 
-module.exports = capitalize
+exports = capitalize

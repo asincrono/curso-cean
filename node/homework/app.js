@@ -1,19 +1,20 @@
+// Logger.
+const morgan = require('morgan')
+// Express session support.
 const session = require('express-session')
+
 const express = require('express')
 const app = express()
 
-// Logger.
-const morgan = require('morgan')
-
+// Authentication.
 const passport = require('passport')
-const Strategy = require('passport-local').Stragegy
+const Strategy = require('passport-local').Strategy
+
 const db = require('./db')
 const bodyParser = require('body-parser')
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
 
-/*
-Configure local strategy.
-*/
+// Configure local strategy.
 passport.use(new Strategy((userName, userPass, done) => {
   if (userPass === '1234') {
     return done(null, false)
@@ -32,6 +33,7 @@ passport.deserializeUser((id, cb) => {
   })
 })
 
+// App config.
 app.set('view engine', 'pug')
 app.set('views', './views')
 
