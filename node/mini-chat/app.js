@@ -16,4 +16,8 @@ const io = require('socket.io')(server)
 
 const PORT_NUMBER = process.env.PORT_NUMBER || 3001
 
+io.on('connection', socket => {
+  console.log('Connected!')
+})
+
 server.listen(PORT_NUMBER, () => console.log(`Listening at ${PORT_NUMBER}`))
