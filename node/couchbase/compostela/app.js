@@ -10,11 +10,11 @@ const cluster = new couchbase.Cluster('couchbase://localhost')
 const bucket = cluster.openBucket('compostela')
 module.exports.bucket = bucket
 
-var index = require('./routes/index')
-var users = require('./routes/users')
-var comments = require('./routes/comments')
+const index = require('./routes/index')
+const users = require('./routes/users')
+const comments = require('./routes/comments')
 
-var app = express()
+const app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -34,7 +34,7 @@ app.user('/comments', comments)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found')
+  const err = new Error('Not Found')
   err.status = 404
   next(err)
 })

@@ -80,7 +80,7 @@ io.on('connection', socket => {
 ```html
 <script>
 function() {
-  var socket = io();
+  const socket = io();
   $('form').submit(function(){
     socket.emit('chat message', $('#m').val());
     $('#m').val('');

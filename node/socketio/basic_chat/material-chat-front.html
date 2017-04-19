@@ -59,26 +59,26 @@
   </div>
   <script src="/socket.io/socket.io.js"></script>
 	<script>
-    var usernameForm = $('#usernameForm')
-    var username = $('#username')
+    const usernameForm = $('#usernameForm')
+    const username = $('#username')
 
-		var messageForm = $('#messageForm')
-		var message = $('#message')
+		const messageForm = $('#messageForm')
+		const message = $('#message')
 
-		var chatWindow = $('#chatWindow')
+		const chatWindow = $('#chatWindow')
 
-		var users = $('#users')
-		var namesWrapper = $('#namesWrapper')
-		var mainWrapper = $('#mainWrapper')
+		const users = $('#users')
+		const namesWrapper = $('#namesWrapper')
+		const mainWrapper = $('#mainWrapper')
 		// ¿Probar con una closure?
 		(function () {
-			var socket = io.connect()
+			const socket = io.connect()
 
 			console.log('wtf!')
 
 			usernameForm.submit((e) => {
 				e.preventDefault()
-				var value = username.val()
+				const value = username.val()
 				socket.emit('new user', {username: username.val()})
 			})
 

@@ -1,19 +1,19 @@
 // ¿Probar con una closure?
 (function () {
-  var messageForm = $('#messageForm')
-  var message = $('#message')
-  var messages = $('#messages')
+  const messageForm = $('#messageForm')
+  const message = $('#message')
+  const messages = $('#messages')
 
-  var users = $('#users')
-  var userForm = $('#userForm')
-  var userName = $('#userName')
-  var socket = io.connect()
+  const users = $('#users')
+  const userForm = $('#userForm')
+  const userName = $('#userName')
+  const socket = io.connect()
 
   console.log('Client connected.')
 
   userForm.submit((e) => {
     e.preventDefault()
-    var value = userName.val()
+    const value = userName.val()
     socket.emit('new user', {userName: userName.val()})
   })
 

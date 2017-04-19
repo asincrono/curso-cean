@@ -1,4 +1,4 @@
-var config = module.exports
+const config = module.exports
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
 config.express = {
