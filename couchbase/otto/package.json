@@ -1,0 +1,25 @@
+{
+  "name": "otto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manuel C. Piñeiro Mourazos",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "couchbase": "git+https://github.com/couchbase/couchnode.git#master",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "ottoman": "^1.0.4"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "env": {
+      "es6": true,
+      "node": true
+    }
+  }
+}
