@@ -1,7 +1,7 @@
 const ottoman = require('ottoman')
 const couchbase = require('couchbase')
 const cluster = new couchbase.Cluster('couchbase://127.0.0.1')
-const bucket = cluster.openBucket('compostela')
+const bucket = cluster.openBucket('beer-sample')
 
 ottoman.store = new ottoman.CbStoreAdapter(bucket, couchbase)
 
