@@ -42,4 +42,22 @@ UserModel.prototype.addPost = function (text) {
   })
 }
 
+
+
+const ottoman = require('ottoman')
+
+const UserModel = ottoman.model('User', {})
+
 module.exports = UserModel
+
+...
+
+const ottoman = require('ottoman')
+
+ottoman.store = new ottoman.CbStoreAdapter(bucket)
+
+...
+
+const user = new UserModel(...)
+
+user.save()

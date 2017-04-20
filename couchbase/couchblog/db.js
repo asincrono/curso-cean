@@ -1,16 +1,15 @@
-const couchbase = require('couchbase')
-const ottoman = require('ottoman')
+module.exports = (bucket) => {
+  let ottoman = require('ottoman')
 
-const cluster = new couchbase.Cluster('couchbase://localhost')
-const bucket = cluster.openBucket('couchblog')
+  ottoman.store = new ottoman.CbStoreAdapter(bucket)
 
-ottoman.store = new ottoman.CbStoreAdapter(bucket)
+  require('./user/user-model')
+  require('./post/post-model')
 
-exports.ottoman = ottoman
+  ottoman.ensureIndices((err) => {
+    console.error(err)
+  })
+}
 
-require('./user/user-model')
-require('./post/post-model')
-
-ottoman.ensureIndices((err) => {
-  console.error(err)
-})
+ottoman = require('ottoman')
+module.exports.EsteModel = ottoman.model(...)

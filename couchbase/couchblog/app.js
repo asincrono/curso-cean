@@ -1,6 +1,12 @@
 const couchbase = require('couchbase')
 const cluster = new couchbase.Cluster('couchbase://127.0.0.1')
-exports.bucket = cluster.openBucket('couchblog')
+const bucket = cluster.openBucket('couchblog')
+
+const ottoman = require('ottoman')
+ottoman.store = new ottoman.CbStoreAdapter(bucket, couchbase)
+
+const UserModel = require('./models/user')
+
 
 const express = require('express')
 const path = require('path')
