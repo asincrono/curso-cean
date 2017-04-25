@@ -51,14 +51,18 @@ function insert (id, doc, cb) {
   })
 }
 
-const n1qlQuery = require('couchbase').N1qlQuery
+const N1qlQuery = require('couchbase').N1qlQuery
+
+function getBucket (bName, bPass, cb) {
+  return openBucket
+}
 
 function n1qlInsert (statement, values, cb) {
   cluster.openBucket('beer-sample', '1234', function (err) {
     if (err) {
       console.error(err)
     } else {
-      let query = n1qlQuery.fromString(statement)
+      let query = N1qlQuery.fromString(statement)
       let self = this
       this.query(query, values, function (err, result) {
         cb(err, result)
@@ -66,6 +70,44 @@ function n1qlInsert (statement, values, cb) {
       })
     }
   })
+}
+
+function n1qlRun (statement, values, cb) {
+  cluster.openBucket('beer-sample', '1234', function (err) {
+    if (err) {
+      cb(err)
+    } else {
+      let query = N1qlQuery.fromString(statement)
+      let self = this
+      this.query(query, values, (err, result)  => {
+        cb(err, result)
+        self.disconnect()
+      })
+    }
+  })
+}
+
+function n1qlDel (values, cb) {
+  cluster.openBucket('beer-sampe', '1234', function (err) {
+    if (err) {
+      cb(err)
+    } else {
+      let statement = 'DELETE FROM $1 WHERE KEY = $2'
+      let query = N1qlQuery.fromString(statement, values)
+      let self = this
+      this.query(query, values, (err, result) => {
+        cb(err, result)
+        self.disconnect()
+      })
+    }
+  })
+}
+
+function n1qlUpdate () {
+  cluster.openBucket
+  let sentence = 'UPDATE `beer-sample` USE KEYS($1) SET iata = $2, name = $3'
+  let query = N1qlQuery.fromString(sentence)
+  bucket.query(query, values)
 }
 
 app.use(logger('dev'))
@@ -99,6 +141,10 @@ app.post('/beer/n1ql/:id', jsonParser, (req, res) => {
       res.status(201).send(result)
     }
   })
+})
+
+app.delete('/beer/n1ql/:id', jsonParser, (req, res) => {
+
 })
 
 app.listen('3001', (err) => {
