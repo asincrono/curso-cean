@@ -1,4 +1,4 @@
 {
-    "vsicons.presets.angular": true,
-    "files.autoSave": "onFocusChange"
+  "typescript.tsdk": "node_modules/typescript/lib/",
+  "vsicons.presets.angular": true
 }
