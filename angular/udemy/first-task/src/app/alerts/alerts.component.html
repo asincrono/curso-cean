@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col s3">
+    <label for="alertName">Alert name</label>
+    <input type="text" class="form-control" [(ngModel)]="alertName" name="alertName">
+    <p>{{alertName}}</p>
+  </div>
+  <div class="col s9">
+    <p *ngIf="alertCreated">{{alertCreationStatus}}</p>
+    <app-alert class="center-align flow-text"></app-alert>
+    <app-alert class="center-align flow-text"></app-alert>
+    <button 
+      class="btn-floating right btn-large waves-effect waves-light red"
+      [disabled]="!allowNewAlerts"
+      (click)="onCreateServer()">
+        <i class="material-icons">add</i>
+    </button>
+  </div>
+</div>
