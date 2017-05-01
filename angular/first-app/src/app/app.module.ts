@@ -6,16 +6,20 @@ import { HttpModule } from '@angular/http'
 import { MdToolbarModule, MdButtonModule} from '@angular/material'
 
 import { AppComponent } from './app.component'
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from 'app/home/home.component'
 import { AuthModule } from './auth/auth.module'
 import { AppRoutingModule } from './app-routing.module'
 import { ToolbarComponent } from './toolbar/toolbar.component'
+import { ListRecipesComponent } from './list-recipes/list-recipes.component'
+import { RecipeComponent } from './recipe/recipe.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ListRecipesComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
