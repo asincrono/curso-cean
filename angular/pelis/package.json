@@ -1,5 +1,5 @@
 {
-  "name": "course-project",
+  "name": "pelis",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -12,7 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.1.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
@@ -21,7 +20,6 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "arrive": "^2.3.1",
     "bootstrap": "^3.3.7",
     "bootstrap-material-design": "^0.5.10",
     "core-js": "^2.4.1",
