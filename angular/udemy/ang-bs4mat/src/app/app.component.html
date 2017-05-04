@@ -1,0 +1,18 @@
+<div class="container">
+  <app-cockpit 
+  (onRedCreated)="onItemAdded($event)"
+  (onBlueCreated)="onItemAdded($event)"
+  ></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <app-item-element *ngFor="let item of items" [item]="item"></app-item-element>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <button (click)="postIt()" class="btn btn-warning">Hey</button>
+    </div>
+  </div>
+</div>

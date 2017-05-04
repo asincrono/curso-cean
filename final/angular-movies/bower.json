@@ -1,0 +1,22 @@
+{
+  "name": "angular-movies",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Manuel C. Piñeiro Mourazos <asincrono@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/asincrono/curso-cean",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "arrive": "^2.3.1",
+    "bootstrap-material-design": "^4.0.2",
+    "jquery": "^3.2.1"
+  }
+}

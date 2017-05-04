@@ -1,0 +1,10 @@
+<div class="card" style="width: 20rem">
+  <div class="card-header">
+      <span *ngIf="item.type === 'red'">Red item</span>
+      <span *ngIf="item.type === 'blue'">Blue item</span>
+    </div>
+  <div class="card-block">
+    <h4 *ngIf="item.type === 'red'" class="card-title" style="color: darkorange">{{ item.name }}</h4>
+    <h4 *ngIf="item.type === 'blue'" class="card-title" style="color: blue">{{ item.name }}</h4>
+  </div>
+</div>

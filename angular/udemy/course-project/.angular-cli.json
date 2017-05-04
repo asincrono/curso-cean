@@ -23,11 +23,12 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/arrive/minified/arrive.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/bootstrap-material-design/dist/js/material.min.js",
         "../node_modules/bootstrap-material-design/dist/js/ripples.min.js",
-        "./scripts/init.js"
-      ],
+        "scripts/init.js"
+        ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
