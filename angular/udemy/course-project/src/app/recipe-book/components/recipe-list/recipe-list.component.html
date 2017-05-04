@@ -1,8 +1,18 @@
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-    <i class="material-icons">add</i>
-  </button>
-<ul class="mdl-list">
-  <hr>
-  <app-recipe-item></app-recipe-item>
-  <hr>
-</ul>
+<div class="row">
+  <div class="col-xs-12">
+    <a href="javascript:void(0)" class="btn btn-success btn-fab">
+      <i class="material-icons">add</i>
+      <div class="ripple-container"></div>
+    </a>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="col-xs-12">
+    <ul class="list-group">
+      <app-recipe-item *ngFor="let recipe of recipes"></app-recipe-item>
+    </ul>
+  </div>
+  </div>
+</div>

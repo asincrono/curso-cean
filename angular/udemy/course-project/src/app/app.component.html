@@ -1,13 +1,15 @@
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<header>
   <app-header></app-header>
-  <main class="mdl-layout__content content">
-    <div class="mdl-grid">
-      <div class="mdl-cell--4-col">
-        <app-shopping-list></app-shopping-list>
-      </div>
-      <div class="mdl-cell--8-col detail">
-        <app-recipe-detail></app-recipe-detail>
+</header>
+
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <app-recipe-book></app-recipe-book>
       </div>
     </div>
-  </main>
-</div>
+    <hr>
+    <app-shopping-list></app-shopping-list>
+  </div>
+</main>
